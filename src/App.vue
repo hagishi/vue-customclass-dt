@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld :foo="foo" msg="Welcome to Your Vue.js + TypeScript App" />
+    <div v-for="(foo, i) in foos" :key="i">
+      <HelloWorld :foo="foo" msg="Welcome to Your Vue.js + TypeScript App" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from './components/HelloWorld.vue';
-import Fuji from './Fuji'
+import Fuji from './Fuji';
 
 @Component({
   components: {
@@ -16,7 +18,7 @@ import Fuji from './Fuji'
   },
 })
 export default class App extends Vue {
-  public foo = new Fuji(new Date())
+  public foos = [new Fuji(new Date()), new Fuji(new Date())];
 }
 </script>
 
